@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Usage Tracker</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="brand-title">VM Usage Monitoring</h1>
+                    <button class="btn-back-home" onclick="goHome()">
+                        <span class="back-icon">←</span>
+                        <span class="back-text">Back to Home</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="vm-dashboard">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h2>Virtual Machine Status</h2>
+                    <div class="header-actions">
+                        <button class="refresh-btn" onclick="loadVMs()">
+                            🔄 Refresh
+                        </button>
+                        <button class="add-vm-btn" onclick="showAddVMModal()">
+                            + Add New VM
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="vm-grid" id="vmCards">
+                    <!-- VM cards will be dynamically loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add VM Modal -->
+    <div class="modal" id="addVMModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Virtual Machine</h5>
+                <button type="button" class="btn-close" onclick="closeModal('addVMModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addVMForm">
+                    <div class="mb-3">
+                        <label for="vmName" class="form-label">VM Name</label>
+                        <input type="text" class="form-control" id="vmName" placeholder="Enter VM name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="vmPlatform" class="form-label">Cloud Platform</label>
+                        <select class="form-control" id="vmPlatform" required>
+                            <option value="">Select Platform</option>
+                            <option value="Azure">Microsoft Azure</option>
+                            <option value="AWS">Amazon Web Services</option>
+                            <option value="GCP">Google Cloud Platform</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('addVMModal')">Cancel</button>
+                <button type="button" class="btn-primary" onclick="addVM()">Add VM</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start VM Modal -->
+    <div class="modal" id="startVMModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h5 class="modal-title">Start VM Session</h5>
+                <button type="button" class="btn-close" onclick="closeModal('startVMModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="startVMForm">
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="purpose" class="form-label">Purpose/Project</label>
+                        <textarea class="form-control" id="purpose" rows="3" placeholder="Describe the purpose of using this VM" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('startVMModal')">Cancel</button>
+                <button type="button" class="btn-success" onclick="startVMSession()">Start Session</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/vm-tracker.js"></script>
+</body>
+</html>

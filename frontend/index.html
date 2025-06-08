@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Usage & Work Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content single-item">
+                    <h1 class="brand-title">Resource Tracker</h1>
+                </div>
+            </div>
+        </header>
+        
+        <main class="module-selection">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2>Choose Your Module</h2>
+                    <p>Select the tracking system you want to access</p>
+                </div>
+                
+                <div class="module-grid">
+                    <div class="module-card" onclick="openVMTracker()">
+                        <div class="module-icon">🖥️</div>
+                        <h2>VM Usage Monitoring</h2>
+                        <p>Track and manage virtual machine resources across Azure, AWS, and GCP platforms</p>
+                        <button class="module-btn">Access VM Tracker</button>
+                    </div>
+                    
+                    <div class="module-card" onclick="openWorkTracker()">
+                        <div class="module-icon">⏱️</div>
+                        <h2>Work Tracking</h2>
+                        <p>Log work activities, track time, and monitor productivity for HR and resource allocation</p>
+                        <button class="module-btn">Access Work Tracker</button>
+                    </div>
+                </div>
+                
+                <!-- Excel Download Links -->
+                <div class="excel-links">
+                    <a href="/exports/vm_usage_data.xlsx" download>
+                        📊 Download VM Usage Excel
+                    </a>
+                    <a href="/exports/work_tracking_data.xlsx" download>
+                        📊 Download Work Tracking Excel
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

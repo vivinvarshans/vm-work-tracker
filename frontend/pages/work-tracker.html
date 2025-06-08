@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Tracker</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="brand-title">Work Tracking</h1>
+                    <button class="btn-back-home" onclick="goHome()">
+                        <span class="back-icon">←</span>
+                        <span class="back-text">Back to Home</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="work-tracker">
+            <div class="container">
+                <!-- Active Session Display -->
+                <div id="activeSession" class="active-session" style="display: none;">
+                    <div class="session-details">
+                        <h5>🟢 Active Work Session</h5>
+                        <div id="sessionDetails"></div>
+                        <div class="session-timer" id="sessionTimer">00:00:00</div>
+                        <button class="btn-danger" onclick="stopCurrentSession()">Stop Session</button>
+                    </div>
+                </div>
+                
+                <!-- Start New Session Form -->
+                <div class="card" id="startSessionCard">
+                    <div class="modal-header">
+                        <h5>Start New Work Session</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="startWorkForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="employeeName" class="form-label">Employee Name</label>
+                                    <input type="text" class="form-control" id="employeeName" placeholder="Enter employee name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="projectName" class="form-label">Project Name</label>
+                                    <input type="text" class="form-control" id="projectName" placeholder="Enter project name" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="activityType" class="form-label">Activity Type</label>
+                                    <select class="form-control" id="activityType" required>
+                                        <option value="">Select Activity</option>
+                                        <option value="Development">Development</option>
+                                        <option value="Testing">Testing</option>
+                                        <option value="Documentation">Documentation</option>
+                                        <option value="Meeting">Meeting</option>
+                                        <option value="Research">Research</option>
+                                        <option value="Support">Support</option>
+                                        <option value="Planning">Planning</option>
+                                        <option value="Review">Code Review</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="taskDescription" class="form-label">Task Description</label>
+                                    <textarea class="form-control" id="taskDescription" rows="2" placeholder="Describe the task you're working on" required></textarea>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn-primary btn-large" onclick="startWorkSession()">
+                                    ▶️ Start Work Session
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Recent Sessions -->
+                <div class="card">
+                    <div class="modal-header">
+                        <h5>Recent Work Sessions</h5>
+                        <button class="btn-outline" onclick="refreshSessions()">🔄 Refresh</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Project</th>
+                                        <th>Activity</th>
+                                        <th>Start Time</th>
+                                        <th>Duration</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sessionsTable">
+                                    <!-- Sessions will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/work-tracker.js"></script>
+</body>
+</html>
